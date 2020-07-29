@@ -14,9 +14,9 @@ class WindowCapture:
     offset_y = 0
 
     # constructor
-    def __init__(self, window_name):
+    def __init__(self, window_name=None):
         # find the handle for the window we want to capture
-        self.hwnd = win32gui.FindWindow(None, window_name)
+        self.hwnd = win32gui.FindWindow(None, window_name) if window_name else win32gui.GetForegroundWindow()
         if not self.hwnd:
             raise Exception('Window not found: {}'.format(window_name))
 
